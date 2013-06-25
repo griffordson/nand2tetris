@@ -1,0 +1,10 @@
+
+CHIP Filter {
+  IN in[16], zero, negate;
+  OUT out[16];
+
+  PARTS:
+  Mux16(a=in, b[0..15]=false, sel=zero, out=zin);
+  Not16(in=zin, out=zneg);
+  Mux16(a=zin, b=zneg, sel=negate, out=out);
+}
